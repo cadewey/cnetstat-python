@@ -11,8 +11,8 @@ std_out.close()
 lines.pop(0) # Consume the header row
 
 for line in lines:
-    parts = re.split("\s+", line)
-    containers.append((parts[0], parts[6]))
+    parts = re.split("\s{2,}", line)
+    containers.append((parts[0], parts[4]))
     
 for c in containers:
     std_out = os.popen(f'crictl inspect {c[0]} | grep /ns/ipc')
