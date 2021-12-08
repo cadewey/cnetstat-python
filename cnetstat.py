@@ -24,7 +24,7 @@ for c in containers:
         pids.append(pid)
         
 for i in range(0, len(pids)):
-    std_out = os.popen(f"nsenter -t {pids[i]} -n netstat --tcp --program")
+    std_out = os.popen(f"nsenter -t {pids[i]} -n netstat -a --tcp --program")
     lines = std_out.readlines()
     std_out.close()
     print(f"Container {containers[i]} (pid {pids[i]} | entries: {len(lines)-2}):") # -2 accounts for header lines
